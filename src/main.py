@@ -55,7 +55,7 @@ ascii_art =r"""
 #print ascii art in color green 
 print("\033[36m" + ascii_art + "\033[0m")
 
-#Überschrift
+#header
 figlet = Figlet(font='slant')
 print(Fore.CYAN + figlet.renderText("Mail Spammer"))
 print("\033[36m" + line + "\033[0m")
