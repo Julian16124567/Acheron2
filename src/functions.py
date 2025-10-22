@@ -27,8 +27,8 @@ def animateText(text, amount):
             time.sleep(0.4)
     print()
 
-def checkEmail():
-    with open("email.txt", "w") as file:
+def checkEmail(fileCheck):
+    with open(f"{fileCheck}", "w") as file:
         inhalt = file.read()
         if len(inhalt) == 0:
             file.close()
@@ -36,14 +36,6 @@ def checkEmail():
         else:
             return True
 
-def checkPwd():
-    with open("pwd.txt", "w") as file:
-        inhalt = file.read()
-        if len(inhalt) == 0:
-            file.close()
-            return False;
-        else:
-            return True;
 
 def writeCredentials(file_name, inp_file):
     with open(f"{file_name}", "w") as file:
