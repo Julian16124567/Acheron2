@@ -87,7 +87,6 @@ if inp == "":
                 functions.writeCredentials("email.txt", email)
                 continue;
             elif checke == True : 
-                
                 checkp = functions.checkEmail("pwd.txt")
                 if checkp == False:
                     pwd = functions.getCredentials("Insert OAuth Token: ")
