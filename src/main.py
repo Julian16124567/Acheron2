@@ -81,19 +81,18 @@ if inp == "":
     #check if pwd and email are given
     try:
         while True:    
-            checke = functions.checkEmail()
+            checke = functions.checkWrite("email.txt")
             if checke == False:
                 email = functions.getCredentials("Insert Email adress: ")
                 functions.writeCredentials("email.txt", email)
                 continue;
             elif checke == True : 
-                while True:
-                    checkp = functions.checkPwd()
-                    if checkp == False:
-                        pwd = functions.getCredentials("Insert OAuth Token: ")
-                        functions.writeCredentials("pwd.txt", pwd)
-                        continue
-                    break
+                checkp = functions.checkWrite("pwd.txt")
+                if checkp == False:
+                    pwd = functions.getCredentials("Insert OAuth Token: ")
+                    functions.writeCredentials("pwd.txt", pwd)
+                    continue
+                break
     except Exception as e:
         print(f"\033[36m[*] {e}\033[0m")
         functions.writeError(e)
