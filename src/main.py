@@ -8,6 +8,9 @@ from pyfiglet import Figlet
 import sys
 import subprocess
 import functions 
+import gui
+import string
+import random
 
 #print ascii art in color green 
 print("\033[36m" + functions.ascii_art + "\033[0m")
@@ -24,9 +27,24 @@ def loading(msg, seconds=2):
         sys.stdout.flush()
         time.sleep(0.5)
 
+#select gui or tui
+print("\033[36m[*] Open GUI (1) or TUI (2).\033[0m")
+select_ui = int(input("\033[36m[>] \033[0m"))
+while True:
+    if select_ui == 1:
+        gui.startWindow()
+        loading("Starting Gui", 1)
+    elif select_ui == 2:
+        break
+    else:
+        print("\033[36m[*] Invalid Input.\033[0m")
+        print(f"{select_ui}")
+        print(type(select_ui))
+        continue
 
 #main script 
-print(Fore.GREEN + "\n[+] Press Enter to Start\n")
+#print(Fore.GREEN + "\n[+] Press Enter to Start\n")
+print("\033[36m[+] Press Enter to Start.\n\033[0m")
 inp = input("")
 
 #work window
@@ -34,21 +52,21 @@ subprocess.run("clear");
 if inp == "":
     subprocess.run("clear", shell=True)
     functions.drawMain()
-    functions.animateText("Checking Credentials", 5)
+    functions.animateText("Checking Credentials", 3)
     
     #check if pwd and email are given
     try:
         while True:    
             checke = functions.checkWrite("email.txt")
             if checke == False:
-                email = functions.getCredentials("Insert Email adress: ")
-                functions.getCredentials("Gmail Adress", "email.txt")
+                email = functions.getCredentials(" Email adress", "email.txt")
+                functions.writeCredentials("email.txt", email)
                 continue;
             elif checke == True : 
-                checkp = functions.checkWrite("pwd.txt", "Auth Token")
+                checkp = functions.checkWrite("pwd.txt")
                 if checkp == False:
-                    pwd = functions.getCredentials("Insert OAuth Token: ")
-                    functions.getCredentials("Password", "pwd.txt")
+                    pwd = functions.getCredentials("Insert OAuth Token: ", "pwd.txt")
+                    functions.writeCredentials("pwd.txt", pwd)
                     continue
                 break
     except Exception as e:
@@ -62,3 +80,35 @@ sys.stdout.write("\033[K")
 sys.stdout.flush()
 
 #spammer logic
+try:
+    header = functions.getHeader()
+    text = functions.getText()    
+    mailto = functions.getEmail()
+    amount = functions.getAmount()
+    me = functions.mailFrom()
+    pwd = functions.getPwd()
+except Exception as e:
+    print(f"Error {e}")
+
+loading("Connecting Email with Gmail SMTP")
+
+if 1 == 1:
+    for i in range(amount):
+        try:
+
+            msg = MIMEText(text, 'plain', 'utf-8')
+            id = random.reandint(1000, 9999)
+            msg['Subject'] = Header(f"{text} [{id}]", 'utf-8')
+            msg['From'] = me
+            msg['To'] = email
+
+            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.starttls()
+            server.login(me, pwd)
+            server.sendmail(me, mailto, msg.as_string())
+            server.quit()
+
+            print(f"\033[95m[*] All messages sent successfully!\033[0m")
+
+        except Exception as e:
+            print(f"\033[95m[!] {e}\033[0m")
