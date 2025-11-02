@@ -90,7 +90,7 @@ try:
 except Exception as e:
     print(f"Error {e}")
 
-loading("Connecting Email with Gmail SMTP")
+functions.loading("Connecting Email with Gmail SMTP")
 
 if 1 == 1:
     for i in range(amount):

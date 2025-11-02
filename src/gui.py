@@ -13,6 +13,4 @@ def startWindow():
     root.deiconify()
 
 def drawWindow():
-        
-
-
+        print("")

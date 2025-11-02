@@ -32,7 +32,7 @@ def checkWrite(fileCheck):
     with open(f"../{fileCheck}", "r") as file:
         inhalt = file.read()
         if inhalt.strip() == "":
-            file.close()
+            file.close()   
             boolt = False
         else:
             boolt = True
@@ -99,6 +99,13 @@ def login():
         #error with color red
         print(f"\033[36m[!] {e}\033[0m")
         writeError(e)
+
+def loading(msg, seconds=2):
+    for i in range(seconds * 2):
+        sys.stdout.write(Fore.YELLOW + f"\r{msg}{'.' * (i % 4)}   ")
+        sys.stdout.flush()
+        time.sleep(0.5)
+    print()
 
 #ascii art
 
