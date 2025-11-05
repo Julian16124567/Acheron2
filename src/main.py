@@ -33,7 +33,8 @@ select_ui = int(input("\033[36m[>] \033[0m"))
 while True:
     if select_ui == 1:
         gui.startWindow()
-        loading("Starting Gui", 1)
+        print("\033[36m[*] Starting GUI.\033[0m")
+        break;
     elif select_ui == 2:
         break
     else:
