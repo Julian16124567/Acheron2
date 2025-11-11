@@ -51,17 +51,18 @@ def writeError(e):
         file.close()
 
 def getHeader():
-    header = input(f"\033[95m[>] Header Message: \033[0m")
+    header = input(f"\033[36m[>] Header Message: \033[0m").strip()
     return header
 
 def getEmail():
-    header = input(f"\033[95m[>] Target Email: \033[0m")
+    header = input(f"\033[36m[>] Target Email: \033[0m").strip()
 
 def getText():
-     header = input(f"\033[95m[>] Target Email: \033[0m")
+     header = input(f"\033[36m[>] Text for Email: \033[0m").strip()
 
 def getAmount():
-    header = input(f"\033[95m[>] Amount of messages: \033[0m")
+    header = int(input(f"\033[36m[>] Amount of messages: \033[0m"))
+    return header
 
 def mailFrom():
     with open("../email.txt", "r") as file:
@@ -102,7 +103,7 @@ def login():
 
 def loading(msg, seconds=2):
     for i in range(seconds * 2):
-        sys.stdout.write(Fore.YELLOW + f"\r{msg}{'.' * (i % 4)}   ")
+        sys.stdout.write(f"\r{msg}{'.' * (i % 4)}   ")
         sys.stdout.flush()
         time.sleep(0.5)
     print()

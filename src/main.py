@@ -44,7 +44,7 @@ while True:
         continue
 
 #main script 
-#print(Fore.GREEN + "\n[+] Press Enter to Start\n")
+#print(Fore.GREEN + "\n[+] Press Enter to Start")
 print("\033[36m[+] Press Enter to Start.\n\033[0m")
 inp = input("")
 
@@ -84,24 +84,29 @@ sys.stdout.flush()
 try:
     header = functions.getHeader()
     text = functions.getText()    
-    mailto = functions.getEmail()
-    amount = functions.getAmount()
+    mailto = "julian.zotter.01@icloud.com"                  #functions.getEmail()
+    amountmails = functions.getAmount()
     me = functions.mailFrom()
     pwd = functions.getPwd()
 except Exception as e:
     print(f"Error {e}")
 
-functions.loading("Connecting Email with Gmail SMTP")
 
+print("\n")
+functions.loading("Connecting Email with Gmail SMTP")
+print("\n")
+
+
+#sending messages
 if 1 == 1:
-    for i in range(amount):
+    for i in range(amountmails):
         try:
 
             msg = MIMEText(text, 'plain', 'utf-8')
-            id = random.reandint(1000, 9999)
+            id = random.randint(1000, 9999)
             msg['Subject'] = Header(f"{text} [{id}]", 'utf-8')
             msg['From'] = me
-            msg['To'] = email
+            msg['To'] = mailto
 
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.starttls()
@@ -112,4 +117,4 @@ if 1 == 1:
             print(f"\033[95m[*] All messages sent successfully!\033[0m")
 
         except Exception as e:
-            print(f"\033[95m[!] {e}\033[0m")
+            print(f"\033[95m[!] {e}\033[0m") 
