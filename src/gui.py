@@ -20,6 +20,10 @@ tabs.pack(pady=10)
 tab1 = tabs.add("Spamer")
 tab2  = tabs.add("Daten")
 
+ctk.CTkLabel(tab1,  font=("Arial", 16, "bold")).pack(pady=10)
+ctk.CTkLabel(tab2,  font=("Arial", 16, "bold")).pack(pady=10)
 
-
+ctk.CTkLabel(tab2, text="Target Email: ", font=("Arial", 16, "bold")).pack(pady=10)
+ctk.CTkLabel(tab2, text="Header Message: ", font=("Arial", 16, "bold")).pack(pady=15)
+ctk.CTkLabel(tab2, text="Text Message: ", font=("Arial", 16, "bold")).pack(pady=20)
 
