@@ -12,7 +12,7 @@ import gui
 import string
 import random
 
-#print ascii art in color green 
+#print ascii ar green 
 print("\033[36m" + functions.ascii_art + "\033[0m")
 
 #header
