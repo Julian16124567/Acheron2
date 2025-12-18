@@ -84,7 +84,7 @@ sys.stdout.flush()
 try:
     header = functions.getHeader()
     text = functions.getText()    
-    mailto = "julian.zotter.01@icloud.com"                 
+    mailto = functions.getRequest()                
     amountmails = functions.getAmount()
     me = functions.mailFrom()
     pwd = functions.getPwd()
