@@ -28,7 +28,7 @@ def loading(msg, seconds=2):
         time.sleep(0.5)
 
 #select gui or tui
-print("\033[36m[*] Open GUI (1) or TUI (2).\033[0m")
+print("\033[36m[*] Open GUI (1(Not available yet!)) or TUI (2).\033[0m")
 select_ui = int(input("\033[36m[>] \033[0m"))
 while True:
     if select_ui == 1:
